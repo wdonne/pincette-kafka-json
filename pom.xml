@@ -6,7 +6,7 @@
 
   <groupId>net.pincette</groupId>
   <artifactId>pincette-kafka-json</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <packaging>jar</packaging>
   <name>pincette-kafka-json</name>
   <description>Pincette JSON Kafka</description>
@@ -46,9 +46,6 @@
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <sonar.projectKey>wdonne_pincette-kafka-json</sonar.projectKey>
-    <sonar.organization>wdonne-github</sonar.organization>
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
   </properties>
 
   <dependencies>
@@ -60,7 +57,7 @@
     <dependency>
       <groupId>net.pincette</groupId>
       <artifactId>pincette-json</artifactId>
-      <version>2.0.6</version>
+      <version>2.0.7</version>
     </dependency>
     <dependency>
       <groupId>org.apache.kafka</groupId>
@@ -75,7 +72,7 @@
     <dependency>
       <groupId>com.fasterxml.jackson.dataformat</groupId>
       <artifactId>jackson-dataformat-cbor</artifactId>
-      <version>2.13.4</version>
+      <version>2.14.1</version>
     </dependency>
   </dependencies>
 
@@ -117,7 +114,7 @@
           </additionalJOptions>
           <links>
             <link>https://docs.oracle.com/en/java/javase/11/docs/api/</link>
-            <link>https://www.javadoc.io/doc/net.pincette/pincette-json/2.0.4/</link>
+            <link>https://www.javadoc.io/doc/net.pincette/pincette-json/2.0.6/</link>
             <link>https://www.javadoc.io/doc/javax.json/javax.json-api/1.1.4/</link>
           </links>
           <sourceFileExcludes>
