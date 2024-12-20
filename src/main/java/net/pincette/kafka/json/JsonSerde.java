@@ -9,7 +9,7 @@ import org.apache.kafka.common.serialization.Serializer;
 /**
  * A Kafka serde for JSON objects.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  * @since 1.0
  */
 public class JsonSerde implements Serde<JsonObject> {

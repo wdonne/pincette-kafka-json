@@ -22,7 +22,7 @@ import org.apache.kafka.common.serialization.Deserializer;
 /**
  * Deserializes JSON objects from compressed CBOR or strings.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  * @since 1.0
  */
 public class JsonDeserializer implements Deserializer<JsonObject> {

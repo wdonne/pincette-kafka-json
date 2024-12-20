@@ -15,7 +15,7 @@ import org.apache.kafka.common.serialization.Serializer;
 /**
  * Serializes JSON objects to compressed CBOR.
  *
- * @author Werner Donn\u00e9
+ * @author Werner Donné
  * @since 1.0
  */
 public class JsonSerializer implements Serializer<JsonObject> {
