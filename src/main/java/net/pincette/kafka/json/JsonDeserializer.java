@@ -8,6 +8,8 @@ import static net.pincette.util.Util.tryToGetWithSilent;
 
 import com.fasterxml.jackson.dataformat.cbor.CBORFactory;
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Map;
 import java.util.Optional;
 import java.util.zip.GZIPInputStream;
@@ -40,6 +42,10 @@ public class JsonDeserializer implements Deserializer<JsonObject> {
     return from(new String(bytes, UTF_8)).filter(JsonUtil::isObject).map(JsonValue::asJsonObject);
   }
 
+  private JsonParser cborParser(final InputStream in) throws IOException {
+    return new JsonParserWrapper(new JacksonParser(factory.createParser(in)));
+  }
+
   @Override
   public void close() {
     // Nothing to close.
@@ -58,10 +64,12 @@ public class JsonDeserializer implements Deserializer<JsonObject> {
 
   private Optional<JsonObject> fromCbor(final byte[] bytes) {
     return tryToGetWithSilent(
-        () ->
-            new JsonParserWrapper(
-                new JacksonParser(
-                    factory.createParser(new GZIPInputStream(new ByteArrayInputStream(bytes))))),
-        JsonDeserializer::getObject);
+            () -> cborParser(new GZIPInputStream(new ByteArrayInputStream(bytes))),
+            JsonDeserializer::getObject)
+        .or(
+            () ->
+                tryToGetWithSilent(
+                    () -> cborParser(new ByteArrayInputStream(bytes)),
+                    JsonDeserializer::getObject));
   }
 }
